@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+	:root {
+		--background: 0 0% 99%;
+		--foreground: 222.2 84% 4.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 222.2 84% 4.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 222.2 84% 4.9%;
+		--primary: 221.2 83.2% 53.3%;
+		--primary-foreground: 210 40% 98%;
+		--secondary: 210 40% 96.1%;
+		--secondary-foreground: 222.2 47.4% 11.2%;
+		--muted: 210 40% 96.1%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+		--accent: 210 40% 96.1%;
+		--accent-foreground: 222.2 47.4% 11.2%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 214.3 31.8% 91.4%;
+		--input: 214.3 31.8% 91.4%;
+		--ring: 221.2 83.2% 53.3%;
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 222.2 84% 4.9%;
+		--foreground: 210 40% 98%;
+		--card: 222.2 84% 4.5%;
+		--card-foreground: 210 40% 98%;
+		--popover: 222.2 84% 4.9%;
+		--popover-foreground: 210 40% 98%;
+		--primary: 217.2 91.2% 59.8%;
+		--primary-foreground: 222.2 47.4% 11.2%;
+		--secondary: 217.2 32.6% 17.5%;
+		--secondary-foreground: 210 40% 98%;
+		--muted: 217.2 32.6% 17.5%;
+		--muted-foreground: 215 20.2% 65.1%;
+		--accent: 217.2 32.6% 17.5%;
+		--accent-foreground: 210 40% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 217.2 32.6% 17.5%;
+		--input: 217.2 32.6% 17.5%;
+		--ring: 224.3 76.3% 48%;
+	}
+}
+
+@font-face {
+	font-family: "RobotoBlack";
+	src: url("./assets/fonts/Roboto-Black.ttf");
+}
+@font-face {
+	font-family: "RobotoBold";
+	src: url("./assets/fonts/Roboto-Bold.ttf");
+}
+@font-face {
+	font-family: "RobotoMedium";
+	src: url("./assets/fonts/Roboto-Medium.ttf");
+}
+@font-face {
+	font-family: "RobotoRegular";
+	src: url("./assets/fonts/Roboto-Regular.ttf");
+}
+@font-face {
+	font-family: "RobotoLight";
+	src: url("./assets//fonts/Roboto-Light.ttf");
+}
+@font-face {
+	font-family: "RobotoThin";
+	src: url("./assets//fonts/Roboto-Thin.ttf");
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground bg-cover bg-no-repeat w-full h-screen;
+	}
+}
+
+h1,
+h2 {
+	font-family: RobotoBold;
+}
+h3 {
+	font-family: RobotoMedium;
+}
+h4 {
+	font-family: RobotoRegular;
+}
+h5 {
+	font-family: RobotoLight;
+}
+a {
+	font-family: RobotoLight;
+}
+@layer base {
+	th,
+	td {
+		@apply py-3 px-2 text-left border border-border;
+	}
+	thead {
+		@apply bg-secondary text-secondary-foreground;
+	}
+	th {
+		@apply font-[RobotoRegular] lg:text-base text-sm;
+	}
+	td {
+		@apply font-[RobotoLight] lg:text-sm text-xs text-muted-foreground;
+	}
+	a {
+		@apply text-foreground cursor-pointer active:bg-transparent active:text-sky-300;
+	}
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	gap: 1rem;
+}
+.sub_main {
+	grid-template-columns: 12rem auto;
+	width: 100%;
+	position: relative;
+	gap: 0.5rem;
+	display: grid;
+}
+.sub {
+	grid-column-start: 2;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 0.3rem;
+}
+#orderCategories a.active {
+	border-bottom: 2px solid blue;
+	color: blue;
+}
+.side_bar a.active {
+	border-right: 4px solid blue;
+	color: blue;
+}
+.setting_sideBar a.active {
+	color: blue;
+	background-color: hsl(var(--background));
+	border-radius: 0.5rem;
+}
+
+select {
+	outline: none;
+}
+textarea {
+	outline: none;
+}
+.hover\:bg-primary\/90:hover {
+	background-color: rgba(0, 0, 255, 0.401) !important;
+}
+
+@media screen and (max-width: 765px) {
+	.sub_main {
+		grid-template-columns: auto;
+	}
+	.sub {
+		grid-column-start: 1;
+	}
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+	width: 0.0625rem; /* Width of the scrollbar */
+	height: 0.0625rem;
+}
+
+::-webkit-scrollbar-track {
+	background: #ffff; /* Color of the track (background behind the scrollbar) */
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #dddd; /* Color of the scrollbar thumb (the moving part) */
+	border-radius: 2rem; /* Rounded corners for the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa; /* Color of the scrollbar thumb on hover */
+}
