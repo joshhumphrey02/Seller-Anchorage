@@ -30,22 +30,30 @@ export const ButtonController = ({ bt, ct, dt }: BProps) => {
 	);
 };
 
-const ButtonsController = (action: boolean, type: string, dt: string) => {
-	const divisions = document.querySelector(`.${type}`);
-	const Divs = divisions.querySelectorAll(".Div")[0];
-	const con = document.querySelector(`.${dt}`);
-	const Div = divisions.querySelectorAll(".Div");
-	const minusBtn = con.querySelector("#minus");
+const ButtonsController = (action: boolean, type: string, dt: string): void => {
+	const divisions = document.querySelector<HTMLElement>(`.${type}`);
+	const Divs = divisions?.querySelectorAll<HTMLElement>(".Div")[0];
+	const con = document.querySelector<HTMLElement>(`.${dt}`);
+	const Div = divisions?.querySelectorAll<HTMLDivElement>(".Div");
+	const minusBtn = con?.querySelector<HTMLButtonElement>("#minus");
 	if (action) {
-		const newDiv = Divs.cloneNode(true);
-		const input = newDiv.querySelectorAll("input")[0];
+		const newDiv = Divs?.cloneNode(true) as HTMLElement;
+		const input = newDiv?.querySelectorAll<HTMLInputElement>("input")[0];
 		input.value = "";
-		divisions.appendChild(newDiv);
-		Div.length > 0
-			? (minusBtn.style.display = "block")
+		divisions?.appendChild(newDiv);
+		Div !== undefined && Div.length > 0
+			? minusBtn === undefined || minusBtn === null
+				? ""
+				: (minusBtn.style.display = "block")
+			: minusBtn === undefined || minusBtn === null
+			? ""
 			: (minusBtn.style.display = "none");
 	} else {
-		divisions.lastElementChild.remove();
-		Div.length <= 2 ? (minusBtn.style.display = "none") : null;
+		divisions?.lastElementChild?.remove();
+		Div !== undefined && Div.length <= 2
+			? minusBtn === undefined || minusBtn === null
+				? ""
+				: (minusBtn.style.display = "none")
+			: null;
 	}
 };

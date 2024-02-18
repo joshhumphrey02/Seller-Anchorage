@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import noOrders from "@/assets/vectors/no orders.avif";
 import AuthProvider from "@/GetStore";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { GetOrders } from "@/firebase/getOrders";
+import { GetOrders } from "@/firebase/GetOrders";
 import { getorders } from "@/reducers/Orders";
 import { format } from "date-fns";
 import { OrderStatus } from "@/components/OrderStatus";

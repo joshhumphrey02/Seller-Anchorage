@@ -48,7 +48,7 @@ function ShopSetup() {
 				);
 				navigate("/login");
 			} else {
-				toast.error(result?.message);
+				toast.error(result !== undefined ? result.message : "");
 			}
 		} catch (err) {
 			dispatch(updateRegisteration({ loading: false }));

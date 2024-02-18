@@ -133,6 +133,3 @@ function App() {
 }
 
 export default App;
-
-// const customerInfo = useAppSelector((state) => state.user);
-// const dispatch = useAppDispatch();

@@ -8,13 +8,17 @@ import {
 } from "@/components/ui/select";
 
 interface date {
-	setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+	setDate: React.Dispatch<React.SetStateAction<string>>;
+	date: string;
 }
 
-function QuickDate({ setDate }: date) {
+function QuickDate({ setDate, date }: date) {
 	return (
 		<Select
-			onValueChange={(value) => setDate(addDays(new Date(), parseInt(value)))}>
+			value={date}
+			onValueChange={(value) =>
+				setDate(addDays(new Date(), parseInt(value)).toDateString())
+			}>
 			<SelectTrigger>
 				<SelectValue placeholder="Select" />
 			</SelectTrigger>

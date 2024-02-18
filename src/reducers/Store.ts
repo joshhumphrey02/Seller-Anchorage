@@ -1,32 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IStore, IStoreDetails } from "../@types";
-
-export interface updateReg {
-	storeShippingState?: string;
-	storeEmail?: string;
-	storeName?: string;
-	verified?: "sent" | "verified" | "verify";
-	verificationCode?: string;
-	loading?: boolean;
-	level?: number;
-	password?: string;
-}
-
-export interface register {
-	storeShippingState: string;
-	storeEmail: string;
-	storeName: string;
-	verified: "sent" | "verified" | "verify";
-	verificationCode: string;
-	loading: boolean;
-	level: number;
-	password: string;
-}
+import { IRegister, IStore, IStoreDetails } from "../@types";
 
 interface store {
 	login: IStore;
 	storeDetails: IStoreDetails;
-	registeraton: register;
+	registeraton: IRegister;
 }
 
 // Define the initial state using that type
@@ -77,7 +55,7 @@ export const storeSlice = createSlice({
 				login: { ...state.login, logged: action.payload },
 			};
 		},
-		updateRegisteration: (state, action: PayloadAction<updateReg>) => {
+		updateRegisteration: (state, action: PayloadAction<Partial<IRegister>>) => {
 			return {
 				...state,
 				registeraton: {

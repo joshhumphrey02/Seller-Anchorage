@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { OrderStatus } from "@/components/OrderStatus";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useEffect } from "react";
-import { GetOrders } from "@/firebase/getOrders";
+import { GetOrders } from "@/firebase/GetOrders";
 import { getorders } from "@/reducers/Orders";
 
 export default function RecentOrders() {

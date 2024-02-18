@@ -6,6 +6,17 @@ export interface IStore {
 	logged?: "logged" | "notLogged" | "checking";
 }
 
+export interface IRegister {
+	storeShippingState: string;
+	storeEmail: string;
+	storeName: string;
+	verified: "sent" | "verified" | "verify";
+	verificationCode: string;
+	loading: boolean;
+	level: number;
+	password: string;
+}
+
 export interface IStoreDetails extends IStore {
 	storeImgUrl: string;
 	storeShippingState: string;

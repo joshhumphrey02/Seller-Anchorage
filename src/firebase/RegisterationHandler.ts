@@ -1,8 +1,8 @@
+import { IRegister } from "@/@types";
 import { auth } from "./firebaseConfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { register } from "@/reducers/Store";
 
-export const RegisterationHandler = async (store: register) => {
+export const RegisterationHandler = async (store: IRegister) => {
 	try {
 		const storeD = await createUserWithEmailAndPassword(
 			auth,

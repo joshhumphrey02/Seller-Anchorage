@@ -4,13 +4,14 @@ import { auth } from "./firebase/firebaseConfig";
 import { useAppDispatch, useAppSelector } from "./redux/hook";
 import { logState, updateLogin } from "./reducers/Store";
 import Loader from "./Loader";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 type MyComponentProps = {
 	children: ReactNode;
 };
 
 const AuthProvider: FC<MyComponentProps> = ({ children }) => {
+	const { pathname } = useLocation();
 	const Store = useAppSelector((state) => state.Store.login);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -33,16 +34,22 @@ const AuthProvider: FC<MyComponentProps> = ({ children }) => {
 		return unSubcribe;
 	}, [Store.logged, dispatch]);
 
-	return (
-		<>
-			{Store.logged === "checking" ? (
-				<Loader />
-			) : Store.logged === "notLogged" ? (
-				<Navigate to={"/login"} replace={true} />
-			) : (
-				<div>{children}</div>
-			)}
-		</>
-	);
+	if (pathname === "/login" || pathname === "/register") {
+		return (
+			<div>
+				{Store.logged === "checking" ? (
+					<Loader />
+				) : Store.logged === "logged" ? (
+					<Navigate to={"/dashboard"} />
+				) : (
+					<div>{children}</div>
+				)}
+			</div>
+		);
+	} else {
+		return (
+			<>{Store.logged === "checking" ? <Loader /> : <div>{children}</div>}</>
+		);
+	}
 };
 export default AuthProvider;

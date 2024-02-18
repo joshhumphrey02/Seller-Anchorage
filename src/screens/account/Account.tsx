@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Edit, Save } from "lucide-react";
 import { useState } from "react";
 import { Form } from "react-router-dom";
-import profileImg from "@/assets/logos/profile svg.png";
 import { Input } from "@/components/ui/input";
 import AuthProvider from "@/GetStore";
+import AccountBoxGrid from "./AccountBoxGrid";
 
 function EditButton() {
 	return (
@@ -49,38 +49,23 @@ function Account() {
 				<div className="sub_main">
 					<Sidebar sidebar={sidebar} setSidebar={setSidebar} />
 					<div className=" sub">
+						<section className="">
+							<div className="mb-5">
+								<h1 className=" text-3xl font-[RobotoBold] mb-4">
+									Welcome to Anchorage!
+								</h1>
+								<p>
+									Complete your informations in each section to take your shop
+									live.😎
+								</p>
+							</div>
+							<AccountBoxGrid />
+						</section>
 						<div className=" p-3 rounded-lg h-fit">
 							<h2 className=" text-2xl font-[RobotoBold] py-2 mb-3">
 								My Company
 							</h2>
 							<div>
-								<div className=" flex gap-3 items-center border p-3 rounded-lg shadow-sm">
-									<div className=" relative w-fit">
-										<img
-											src={profileImg}
-											alt="Company Profile Pix"
-											width={60}
-											height={60}
-											className=" rounded"
-										/>
-										<div className=" absolute z-10  bottom-[-1px] left-[1.35rem]">
-											<Button className="text-white p-0 bg-transparent w-fit h-fit rounded-full">
-												<Edit size={17} />
-											</Button>
-										</div>
-									</div>
-									<div className=" grid gap-1">
-										<h4 className="font-[RobotoRegular] text-base">
-											{company.fullName}
-										</h4>
-										<h6 className="font-[RobotoLight] text-sm">
-											{company.category}
-										</h6>
-										<p className="font-[RobotoLight] text-sm">
-											{company?.address}
-										</p>
-									</div>
-								</div>
 								<Form className="my-3 p-3 border rounded-lg">
 									<div className="h-10 flex justify-between">
 										<h3 className=" text-base font-[RobotoMedium]">

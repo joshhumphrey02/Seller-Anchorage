@@ -6,7 +6,7 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import { Button } from "@/components/ui/button";
 import { addDays, format } from "date-fns";
 import { Minus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import noTrans from "@/assets/vectors/no-transactions.avif";
 import AuthProvider from "@/GetStore";
 
@@ -24,10 +24,10 @@ const transTitles = [
 function Transactions() {
 	const [fromDate, setFromDate] = useState<Date | undefined>();
 	const [toDate, setToDate] = useState<Date | undefined>();
-	const [date, setQuickDate] = useState<Date>();
+	const [date, setQuickDate] = useState("");
 	const [table, setTable] = useState(false);
 
-	useState(() => {
+	useEffect(() => {
 		setFromDate(addDays(new Date(), parseInt("0")));
 		setToDate(addDays(new Date(), parseInt("30")));
 	}, []);
@@ -42,6 +42,7 @@ function Transactions() {
 						<h1 className=" text-2xl font-[RobotoBold] my-3">
 							All Transactions
 						</h1>
+						<span hidden onClick={() => setTable(true)}></span>
 						<div>
 							<div className=" border rounded-md p-3 grid grid-cols-1 md:grid-cols-[auto,20%] gap-6 md:gap-[10%]">
 								<form
@@ -70,7 +71,7 @@ function Transactions() {
 										Quick Duration
 									</h4>
 									<div className="flex gap-3">
-										<QuickDate setDate={setQuickDate} />
+										<QuickDate setDate={setQuickDate} date={date} />
 									</div>
 								</div>
 							</div>
